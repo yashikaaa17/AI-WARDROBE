@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore My Style</title>
+    <title>AI Stylist</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,82 +25,106 @@
 </nav>
 
 
-<section class="page-title">
+<section class="stylist">
 
-    <p class="tag">DISCOVER YOURSELF</p>
+    <div class="stylist-text">
 
-    <h1>Explore My Style</h1>
+        <p class="tag">YOUR PERSONAL STYLIST</p>
 
-    <p>Let's find out what makes your style unique.</p>
+        <h1>What are we<br>wearing today? ✨</h1>
 
-</section>
+        <p>
+            Tell us where you're going and we'll help
+            you find the perfect outfit.
+        </p>
+
+    </div>
 
 
-<section class="explore">
+    <div class="chat">
 
-    <h2>What is your vibe?</h2>
-
-    <div class="style-cards">
-
-        <div class="style-card">
-            <span>🌸</span>
-            <h3>Soft & Elegant</h3>
-            <p>Simple, graceful and comfortable.</p>
-        </div>
-
-        <div class="style-card">
-            <span>🖤</span>
-            <h3>Minimal</h3>
-            <p>Clean looks with simple colours.</p>
-        </div>
-
-        <div class="style-card">
+        <div class="message">
             <span>✨</span>
-            <h3>Trendy</h3>
-            <p>Fun outfits and modern trends.</p>
+
+            <div>
+                <b>AI Stylist</b>
+                <p>Hey! What are you dressing up for today?</p>
+            </div>
         </div>
 
-        <div class="style-card">
-            <span>🌿</span>
-            <h3>Casual</h3>
-            <p>Relaxed outfits for everyday life.</p>
+
+        <div class="choices">
+            <button type="button" data-occasion="college">College</button>
+            <button type="button" data-occasion="date night">Date Night</button>
+            <button type="button" data-occasion="party">Party</button>
+            <button type="button" data-occasion="casual">Casual</button>
         </div>
 
-    </div>
 
+        <div class="chat-input">
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Tell me what you need..."
+            >
 
-    <div class="colour-box">
-
-        <h2>Pick your favourite colours</h2>
-
-        <div class="colours">
-            <span class="purple"></span>
-            <span class="pink"></span>
-            <span class="beige"></span>
-            <span class="black"></span>
-            <span class="blue"></span>
+            <button type="button" id="sendBtn">➤</button>
         </div>
 
-        <div id="colorSuggestion">
-        <h3 id="colorTitle"></h3>
-         <p id="matchingColors"></p>
-       </div>
-
-    
-
-       <button class="btn" id="findStyle" type="button">
-       Find My Style 
-       </button>
-       
-       <p id="styleResult"></p>
     </div>
 
 </section>
 
-<script src="explore.js"></script>
 
+<section class="outfit">
+
+    <h2>Today's Style Suggestion</h2>
+
+    <div class="outfit-card">
+
+        <img
+            id="outfitImage"
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
+            alt="Recommended outfit"
+        >
+
+        <div>
+            <p class="tag">AI RECOMMENDS</p>
+
+            <h2 id="outfitTitle">Effortless Everyday Look</h2>
+
+            <p id="outfitDescription">
+                White top + blue jeans + denim jacket
+            </p>
+
+            <button class="btn" id="tryLookBtn" type="button">
+                Try This Look
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="wardrobe-cta">
+
+    <h2>Want to explore your wardrobe?</h2>
+
+    <p>Visit My Wardrobe to explore your fashion collection.</p>
+
+    <a href="wardrobe.html" class="btn">
+        Go to My Wardrobe
+    </a>
+
+</section>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
+
 
 
