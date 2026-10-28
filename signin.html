@@ -32,28 +32,25 @@
 
         <p>Continue your personal style journey.</p>
 
+      <form>
+       <form id="loginForm" novalidate>
 
-        <form>
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+    <small id="emailError" class="error"></small>
 
-            <label>Email</label>
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    <small id="passwordError" class="error"></small>
 
-            <input
-                type="email"
-                placeholder="Enter your email"
-                required>
+    <label class="show-password">
+        <input type="checkbox" id="showPassword">
+        Show Password
+    </label>
 
+    <button class="btn" type="submit">Sign In</button>
 
-            <label>Password</label>
-
-            <input
-                type="password"
-                placeholder="Enter your password"
-                required>
-
-
-            <button class="btn" type="submit">
-                Sign In
-            </button>
+    <p id="loginMessage"></p>
 
         </form>
 
@@ -71,6 +68,6 @@
 <footer>
     <p>© 2026 AI Wardrobe • Made with 💜</p>
 </footer>
-
+<script src="signin.js"></script>
 </body>
 </html>
