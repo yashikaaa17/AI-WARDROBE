@@ -27,6 +27,7 @@
 
     <div class="hero-text">
         <p class="tag">YOUR PERSONAL STYLE ASSISTANT</p>
+        <p id="welcomeText"></p>
 
         <h1>Your Wardrobe,<br>Styled Smarter.</h1>
 
@@ -54,19 +55,19 @@
     <div class="cards">
 
         <div class="card">
-            <div class="emoji">👗</div>
+            <div class="emoji"></div>
             <h3>My Wardrobe</h3>
             <p>Keep all your favourite clothes in one place.</p>
         </div>
 
         <div class="card">
-            <div class="emoji">✨</div>
+            <div class="emoji"></div>
             <h3>AI Stylist</h3>
             <p>Get outfit ideas for every occasion.</p>
         </div>
 
         <div class="card">
-            <div class="emoji">💜</div>
+            <div class="emoji"></div>
             <h3>Find Your Style</h3>
             <p>Discover what looks and colours suit you.</p>
         </div>
@@ -77,6 +78,32 @@
 
 
 <section class="match">
+    <section class="quick-look">
+
+    <h2> Quick Outfit Idea</h2>
+    <p>Not sure what to wear? Choose your occasion!</p>
+
+    <form id="outfitForm">
+        <select id="occasion" required>
+            <option value="">Select Occasion</option>
+            <option>College</option>
+            <option>Party</option>
+            <option>Casual</option>
+            <option>Date</option>
+        </select>
+
+        <button class="btn" type="submit">Get Outfit Idea</button>
+    </form>
+
+    <h3 id="outfitResult"></h3>
+
+    <button class="btn" id="saveOutfit" style="display:none;">
+        Save This Look
+    </button>
+
+    <p id="saveMessage"></p>
+
+</section>
 
     <div>
         <p class="tag">MEET YOUR STYLE MATCH</p>
@@ -101,7 +128,7 @@
 
 
 <footer>
-    <p>© 2026 AI Wardrobe • Made with 💜</p>
+    <p>© 2026 AI Wardrobe • Made with </p>
 </footer>
 
 </body>
