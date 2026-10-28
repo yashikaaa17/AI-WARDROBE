@@ -676,3 +676,50 @@ footer {
     border: 1px solid #ccc;
     border-radius: 8px;
 }
+
+
+
+
+colours span {
+    cursor: pointer;
+}
+
+.colours span.activeColor {
+    outline: 3px solid #8b7cc8;
+    outline-offset: 3px;
+}
+
+#colorSuggestion {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#colorTitle {
+    color: #655a91;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+#matchingColors {
+    color: #555;
+    font-size: 16px;
+}
+
+
+/* Find My Style Button */
+
+#findStyle {
+    display: none;
+    margin-top: 20px;
+    background: #8b7cc8;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#findStyle:hover {
+    background: #7566b5;
+}
+}
+
