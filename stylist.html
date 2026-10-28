@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,16 +54,21 @@
 
 
         <div class="choices">
-            <button>College </button>
-            <button>Date Night </button>
-            <button>Party </button>
-            <button>Casual </button>
+            <button type="button" data-occasion="college">College</button>
+            <button type="button" data-occasion="date night">Date Night</button>
+            <button type="button" data-occasion="party">Party</button>
+            <button type="button" data-occasion="casual">Casual</button>
         </div>
 
 
         <div class="chat-input">
-            <input type="text" placeholder="Tell me what you need...">
-            <button>➤</button>
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Tell me what you need..."
+            >
+
+            <button type="button" id="sendBtn">➤</button>
         </div>
 
     </div>
@@ -75,16 +82,24 @@
 
     <div class="outfit-card">
 
-        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80">
+        <img
+            id="outfitImage"
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
+            alt="Recommended outfit"
+        >
 
         <div>
             <p class="tag">AI RECOMMENDS</p>
 
-            <h2>Effortless Everyday Look</h2>
+            <h2 id="outfitTitle">Effortless Everyday Look</h2>
 
-            <p>White top + blue jeans + denim jacket</p>
+            <p id="outfitDescription">
+                White top + blue jeans + denim jacket
+            </p>
 
-            <button class="btn">Try This Look</button>
+            <button class="btn" id="tryLookBtn" type="button">
+                Try This Look
+            </button>
         </div>
 
     </div>
@@ -92,9 +107,21 @@
 </section>
 
 
-<footer>
-    <p>© 2026 AI Wardrobe • Made with </p>
-</footer>
+
+<section class="wardrobe-cta">
+
+    <h2>Want to explore your wardrobe?</h2>
+
+    <p>Visit My Wardrobe to explore your fashion collection.</p>
+
+    <a href="wardrobe.html" class="btn">
+        Go to My Wardrobe
+    </a>
+
+</section>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
