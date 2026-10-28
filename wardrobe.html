@@ -35,9 +35,30 @@
     <div class="upload">
         <h2>Add something new</h2>
         <p>Upload your clothes and keep your wardrobe organised.</p>
-        <button class="btn">+ Add Clothes</button>
+    <button class="btn" onclick="showForm()">+ Add Clothes</button>
     </div>
+  <div id="addForm" style="display:none;">
 
+    <h2>Add New Clothing</h2>
+
+    <form id="clothesForm">
+        <input type="text" id="clothName"
+               placeholder="Clothing Name" required>
+
+        <select id="clothCategory">
+            <option>Tops</option>
+            <option>Bottoms</option>
+            <option>Dresses</option>
+            <option>Shoes</option>
+        </select>
+
+        <input type="url" id="clothImage"
+               placeholder="Paste Image URL" required>
+
+        <button class="btn" type="submit">Add Item</button>
+    </form>
+
+</div>
 
     <div class="categories">
         <button>All</button>
