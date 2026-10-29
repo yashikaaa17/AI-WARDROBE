@@ -98,11 +98,32 @@
     </div>
 
 </section>
+<section class="feedback">
+    <h2>Share Your Feedback </h2>
+    <p>We'd love to know what you think!</p>
 
+    <form id="feedbackForm">
+        <input type="text" id="fbName" placeholder="Your Name" required>
 
-<footer>
-    <p>© 2026 AI Wardrobe • Made with </p>
-</footer>
+        <input type="email" id="fbEmail" placeholder="Your Email" required>
+
+        <select id="fbRating" required>
+            <option value="">Rate Our Website</option>
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Good</option>
+            <option value="3">3 - Average</option>
+            <option value="2">2 - Fair</option>
+            <option value="1">1 - Poor</option>
+        </select>
+
+        <textarea id="fbMessage" placeholder="Your Feedback" required></textarea>
+
+        <button class="btn" type="submit">Submit Feedback</button>
+    </form>
+
+    <p id="feedbackResult"></p>
+</section>
+<script src="about.js"></script>
 
 </body>
 </html>
