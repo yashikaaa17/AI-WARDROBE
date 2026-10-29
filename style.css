@@ -783,3 +783,20 @@ colours span {
     margin-top: 15px;
 }
 
+
+/*welcome Text*/
+#welcomeText {
+    color: #8b7cc8;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card a:hover {
+    color: #8b7cc8;
+    text-decoration: underline;
+}
+
+
+
+
