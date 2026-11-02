@@ -1,34 +1,23 @@
-document.getElementById("signupForm").onsubmit = function(event) {
+var signupForm = document.getElementById("signupForm");
+
+signupForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("signupEmail").value.trim();
-    let password = document.getElementById("signupPassword").value;
-    let confirm = document.getElementById("confirmPassword").value;
+    var message = document.getElementById("signupMessage");
 
-    let message = document.getElementById("signupMessage");
+    AIWardrobe.call("registerUser", {
+        name: document.getElementById("name").value,
+        email: document.getElementById("signupEmail").value,
+        password: document.getElementById("signupPassword").value,
+        confirmPassword: document.getElementById("confirmPassword").value
+    }).then(function (result) {
+        message.innerText = result.message;
 
-    if (name == "" || email == "" || password == "" || confirm == "") {
-        message.innerText = "Please fill all the fields";
-    }
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        message.innerText = "Please enter a valid email";
-    }
-    else if (password.length < 8) {
-        message.innerText = "Password must have at least 8 characters";
-    }
-    else if (password !== confirm) {
-        message.innerText = "Passwords do not match";
-    }
-    else {
-        message.innerText = "Registration form submitted successfully!";
-
-        let user = {
-            name: name,
-            email: email
-        };
-
-        localStorage.setItem("wardrobeUser", JSON.stringify(user));
-        document.getElementById("signupForm").reset();
-    }
-};
+        if (result.ok) {
+            signupForm.reset();
+            setTimeout(function () {
+                window.location.href = "index.html";
+            }, 800);
+        }
+    });
+});

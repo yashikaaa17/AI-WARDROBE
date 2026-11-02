@@ -1,25 +1,20 @@
-document.getElementById("feedbackForm").onsubmit = function(event) {
+document.getElementById("feedbackForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let name = document.getElementById("fbName").value.trim();
-    let email = document.getElementById("fbEmail").value.trim();
-    let rating = document.getElementById("fbRating").value;
-    let message = document.getElementById("fbMessage").value.trim();
+    var form = this;
 
-    if (name == "" || email == "" || rating == "" || message == "") {
-        alert("Please fill all fields");
-        return;
-    }
+    AIWardrobe.call("submitFeedback", {
+        name: document.getElementById("fbName").value,
+        email: document.getElementById("fbEmail").value,
+        rating: document.getElementById("fbRating").value,
+        message: document.getElementById("fbMessage").value
+    }).then(function (result) {
+        if (!result.ok) {
+            alert(result.message);
+            return;
+        }
 
-    let feedback = {name, email, rating, message};
-
-    let data = JSON.parse(localStorage.getItem("feedbacks") || "[]");
-    data.push(feedback);
-
-    localStorage.setItem("feedbacks", JSON.stringify(data));
-
-    document.getElementById("feedbackResult").innerText =
-        "Thank you for your feedback! ";
-
-    document.getElementById("feedbackForm").reset();
-};
+        document.getElementById("feedbackResult").innerText = result.message;
+        form.reset();
+    });
+});

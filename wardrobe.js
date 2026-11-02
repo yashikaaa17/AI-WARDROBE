@@ -1,33 +1,74 @@
+var clothesGrid = document.querySelector(".clothes");
+var addForm = document.getElementById("addForm");
+var clothesForm = document.getElementById("clothesForm");
+var filterButtons = document.querySelectorAll(".categories button");
+var activeCategory = "All";
+
 function showForm() {
-    document.getElementById("addForm").style.display = "block";
+    addForm.style.display = "block";
 }
 
-document.getElementById("clothesForm").onsubmit = function(event) {
-    event.preventDefault();
-
-    let name = document.getElementById("clothName").value;
-    let category = document.getElementById("clothCategory").value;
-    let image = document.getElementById("clothImage").value;
-
-    let card = document.createElement("div");
+function buildCard(item) {
+    var card = document.createElement("div");
     card.className = "clothes-card";
+    card.setAttribute("data-category", item.category);
 
-    let img = document.createElement("img");
-    img.src = image;
-    img.alt = name;
+    var img = document.createElement("img");
+    img.src = item.image;
+    img.alt = item.name;
 
-    let heading = document.createElement("h3");
-    heading.textContent = name;
+    var heading = document.createElement("h3");
+    heading.textContent = item.name;
 
-    let detail = document.createElement("p");
-    detail.textContent = category;
+    var detail = document.createElement("p");
+    detail.textContent = item.detail || item.category;
 
     card.append(img, heading, detail);
+    return card;
+}
 
-    document.querySelector(".clothes").appendChild(card);
+function applyFilter() {
+    clothesGrid.querySelectorAll(".clothes-card").forEach(function (card) {
+        var show = activeCategory === "All" || card.getAttribute("data-category") === activeCategory;
+        card.classList.toggle("hidden", !show);
+    });
+}
 
-    document.getElementById("clothesForm").reset();
-    document.getElementById("addForm").style.display = "none";
+AIWardrobe.call("listClothes", { category: "All" }).then(function (result) {
+    result.items.forEach(function (item) {
+        clothesGrid.appendChild(buildCard(item));
+    });
+    return AIWardrobe.call("getPreferences");
+}).then(function (result) {
+    activeCategory = result.preferences.filter || "All";
+    applyFilter();
+});
 
-    alert("Clothing added successfully!");
-};
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        activeCategory = button.textContent.trim();
+        AIWardrobe.call("setPreference", { name: "filter", value: activeCategory });
+        applyFilter();
+    });
+});
+
+clothesForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    AIWardrobe.call("addClothingItem", {
+        name: document.getElementById("clothName").value,
+        category: document.getElementById("clothCategory").value,
+        image: document.getElementById("clothImage").value
+    }).then(function (result) {
+        if (!result.ok) {
+            alert(result.message);
+            return;
+        }
+
+        clothesGrid.appendChild(buildCard(result.item));
+        applyFilter();
+        clothesForm.reset();
+        addForm.style.display = "none";
+        alert(result.message);
+    });
+});

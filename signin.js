@@ -1,40 +1,35 @@
-let form = document.getElementById("loginForm");
+var form = document.getElementById("loginForm");
+var emailError = document.getElementById("emailError");
+var passwordError = document.getElementById("passwordError");
+var loginMessage = document.getElementById("loginMessage");
 
-form.onsubmit = function(event) {
+form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let email = document.getElementById("email").value.trim();
-    let password = document.getElementById("password").value;
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value;
 
-    document.getElementById("emailError").innerText = "";
-    document.getElementById("passwordError").innerText = "";
-    document.getElementById("loginMessage").innerText = "";
+    emailError.innerText = "";
+    passwordError.innerText = "";
+    loginMessage.innerText = "";
 
-    let valid = true;
+    AIWardrobe.call("loginUser", { email: email, password: password }).then(function (result) {
+        if (!result.ok) {
+            if (result.field === "password") {
+                passwordError.innerText = result.message;
+            } else {
+                emailError.innerText = result.message;
+            }
+            return;
+        }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        document.getElementById("emailError").innerText =
-            "Please enter a valid email";
-        valid = false;
-    }
+        loginMessage.innerText = result.message;
+        setTimeout(function () {
+            window.location.href = "index.html";
+        }, 800);
+    });
+});
 
-    if (password.length < 8) {
-        document.getElementById("passwordError").innerText =
-            "Password must have at least 8 characters";
-        valid = false;
-    }
-
-    if (valid) {
-        document.getElementById("loginMessage").innerText =
-            "Login form submitted successfully!";
-    }
-};
-document.getElementById("showPassword").onclick = function() {
-    let password = document.getElementById("password");
-
-    if (this.checked) {
-        password.type = "text";
-    } else {
-        password.type = "password";
-    }
-};
+document.getElementById("showPassword").addEventListener("click", function () {
+    document.getElementById("password").type = this.checked ? "text" : "password";
+});

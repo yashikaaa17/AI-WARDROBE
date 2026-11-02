@@ -1,6 +1,10 @@
-let user = JSON.parse(localStorage.getItem("wardrobeUser"));
+(function () {
+    var welcome = document.getElementById("welcomeText");
+    if (!welcome) return;
 
-if (user && user.name) {
-    document.getElementById("welcomeText").innerText =
-        "Welcome back, " + user.name + "! ";
-}
+    AIWardrobe.call("getCurrentUser").then(function (result) {
+        if (result.user) {
+            welcome.innerText = "Welcome back, " + result.user.name + "! ";
+        }
+    });
+})();
