@@ -1001,3 +1001,32 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.wardrobe-cta {
+    text-align: center;
+    padding: 50px 20px 70px;
+    background: #eeeafd;
+}
+
+.wardrobe-cta h2 {
+    margin-bottom: 12px;
+    color: #29252f;
+}
+
+.wardrobe-cta p {
+    color: #777;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.wardrobe-cta .btn {
+    text-decoration: none;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 800px) {
+    .wardrobe-cta {
+        padding: 35px 15px 50px;
+    }
+} 
