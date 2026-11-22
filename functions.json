@@ -1,0 +1,416 @@
+{
+  "name": "ai-wardrobe-functions",
+  "version": "1.0.0",
+  "call": "AIWardrobe.call(name, args)",
+  "functions": [
+    {
+      "name": "registerUser",
+      "description": "Create a new account and sign the user in.",
+      "page": "signup.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Full name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8
+          },
+          "confirmPassword": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password",
+          "confirmPassword"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "message": "string",
+        "user": "object"
+      }
+    },
+    {
+      "name": "loginUser",
+      "description": "Sign in with an existing email and password.",
+      "page": "signin.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "message": "string",
+        "user": "object"
+      }
+    },
+    {
+      "name": "logoutUser",
+      "description": "Sign the current user out.",
+      "page": "all",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "returns": {
+        "ok": "boolean"
+      }
+    },
+    {
+      "name": "getCurrentUser",
+      "description": "Return the signed-in user or null.",
+      "page": "all",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "returns": {
+        "user": "object|null"
+      }
+    },
+    {
+      "name": "recommendOutfit",
+      "description": "Recommend an outfit for an occasion or season such as summer, winter, ethnic, date night, party, spring, monsoon, autumn, college or casual.",
+      "page": "stylist.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Occasion, season or keyword like kurti, birthday, rainy"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "key": "string",
+        "title": "string",
+        "description": "string",
+        "image": "string"
+      }
+    },
+    {
+      "name": "suggestFromWardrobe",
+      "description": "Pick pieces from the user's saved wardrobe that fit a recommended look.",
+      "page": "stylist.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "look": {
+            "type": "string",
+            "description": "Look key returned by recommendOutfit"
+          }
+        },
+        "required": [
+          "look"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "items": "array",
+        "message": "string"
+      }
+    },
+    {
+      "name": "addClothingItem",
+      "description": "Add a clothing item to the wardrobe and save it.",
+      "page": "wardrobe.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "Tops",
+              "Bottoms",
+              "Dresses",
+              "Shoes"
+            ]
+          },
+          "image": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [
+          "name",
+          "category",
+          "image"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "message": "string",
+        "item": "object"
+      }
+    },
+    {
+      "name": "listClothes",
+      "description": "List saved wardrobe items, optionally filtered by category.",
+      "page": "wardrobe.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "All",
+              "Tops",
+              "Bottoms",
+              "Dresses",
+              "Shoes"
+            ]
+          }
+        },
+        "required": []
+      },
+      "returns": {
+        "items": "array"
+      }
+    },
+    {
+      "name": "getColorMatches",
+      "description": "Return colours that match a chosen favourite colour.",
+      "page": "explore.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "enum": [
+              "purple",
+              "pink",
+              "beige",
+              "black",
+              "blue"
+            ]
+          }
+        },
+        "required": [
+          "color"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "title": "string",
+        "matches": "array"
+      }
+    },
+    {
+      "name": "findMyStyle",
+      "description": "Build a style summary and an image search link from a chosen colour and optional vibe.",
+      "page": "explore.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "enum": [
+              "purple",
+              "pink",
+              "beige",
+              "black",
+              "blue"
+            ]
+          },
+          "vibe": {
+            "type": "string",
+            "enum": [
+              "Soft & Elegant",
+              "Minimal",
+              "Trendy",
+              "Casual"
+            ]
+          }
+        },
+        "required": [
+          "color"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "message": "string",
+        "url": "string"
+      }
+    },
+    {
+      "name": "submitFeedback",
+      "description": "Save website feedback.",
+      "page": "about.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "rating": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "rating",
+          "message"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    {
+      "name": "setPreference",
+      "description": "Save a UI selection in local storage so it is restored on the next visit.",
+      "page": "all",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "lastLook",
+              "color",
+              "vibe",
+              "filter"
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ]
+      },
+      "returns": {
+        "ok": "boolean"
+      }
+    },
+    {
+      "name": "getPreferences",
+      "description": "Read all saved UI selections from local storage.",
+      "page": "all",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "returns": {
+        "ok": "boolean",
+        "preferences": "object"
+      }
+    },
+    {
+      "name": "getProfile",
+      "description": "Return the signed-in user's profile and activity counts.",
+      "page": "profile.html",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "returns": {
+        "ok": "boolean",
+        "profile": "object"
+      }
+    },
+    {
+      "name": "updateProfile",
+      "description": "Change the signed-in user's display name.",
+      "page": "profile.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "message": "string",
+        "user": "object"
+      }
+    },
+    {
+      "name": "changePassword",
+      "description": "Change the signed-in user's password.",
+      "page": "profile.html",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "currentPassword": {
+            "type": "string"
+          },
+          "newPassword": {
+            "type": "string",
+            "minLength": 8
+          },
+          "confirmPassword": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "required": [
+          "currentPassword",
+          "newPassword",
+          "confirmPassword"
+        ]
+      },
+      "returns": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    }
+  ]
+}
