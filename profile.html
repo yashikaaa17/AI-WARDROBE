@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">AI Wardrobe</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="wardrobe.html">My Wardrobe</a>
+        <a href="stylist.html">AI Stylist</a>
+        <a href="explore.html">Explore My Style</a>
+        <a href="about.html">About Us</a>
+        <a href="signin.html" class="sign-in">Sign In</a>
+    </div>
+</nav>
+
+
+<section class="page-title">
+    <p class="tag">YOUR ACCOUNT</p>
+    <h1>My Profile 💜</h1>
+    <p>Manage your details and see your activity.</p>
+</section>
+
+
+<section class="profile">
+
+    <div class="profile-card profile-top">
+        <div class="profile-avatar" id="profileAvatar"></div>
+        <h2 id="profileName"></h2>
+        <p id="profileEmail"></p>
+        <p id="profileSince"></p>
+
+        <div class="profile-stats">
+            <div><b id="statItems">0</b><span>Clothes</span></div>
+            <div><b id="statFeedback">0</b><span>Feedback sent</span></div>
+        </div>
+
+        <button class="btn" id="profileLogout" type="button" style="margin-top:25px;">Sign Out</button>
+    </div>
+
+    <div>
+        <div class="profile-card">
+            <h2>Edit Profile</h2>
+            <form id="profileForm" novalidate>
+                <label>Full Name</label>
+                <input type="text" id="profileNameInput" placeholder="Enter your name">
+
+                <label>Email</label>
+                <input type="email" id="profileEmailInput" disabled>
+
+                <button class="btn" type="submit">Save Changes</button>
+                <p class="profile-note" id="profileMessage"></p>
+            </form>
+        </div>
+
+        <div class="profile-card" style="margin-top:30px;">
+            <h2>Change Password</h2>
+            <form id="passwordForm" novalidate>
+                <label>Current Password</label>
+                <input type="password" id="currentPassword" placeholder="Current password">
+
+                <label>New Password</label>
+                <input type="password" id="newPassword" placeholder="New password">
+
+                <label>Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" placeholder="Confirm new password">
+
+                <button class="btn" type="submit">Update Password</button>
+                <p class="profile-note" id="passwordMessage"></p>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+
+<footer>
+    <p>© 2026 AI Wardrobe • Made with 💜</p>
+</footer>
+<script src="core.js"></script>
+<script src="profile.js"></script>
+</body>
+</html>
